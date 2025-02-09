@@ -1,0 +1,27 @@
+word;pos;ttpos;rrnpos;ttlemma;rnnlemma;id;s_line;position;word2;word2lemma
+g;PRO:pers:suj:1:sg:unb;PRO:pers;PROper;je;je;nimb2;124;0 134 830;encontre;encontre	
+g;PRO:pers:suj:1:sg:unb;PRO:pers;PROper;je;je;thebefrag;163;0 187 565;en;en	
+j;PRO:pers:suj:1:sg:unb;PRO:pers;PROper;je;je;benoit;928;0 318 259;en;en	
+i;PRO:pers:suj:1:sg:unb;PRO:clit;PROadv;i2|i|y;y;percevalb;771;0 704 609;o;o	
+i;PRO:pers:suj:1:sg:unb;PRO:clit;PROadv;i2|i|y;y;percevalb;1051;0 706 350;o;o	
+j;PRO:pers:suj:1:sg:unb;PRO:pers;PROper;je;je;percevalb;2348;0 714 323;o;o	
+i;PRO:pers:suj:1:sg:unb;PRO:clit;PROadv;i2|i|y;y;percevalb;3073;0 718 675;o;o	
+i;PRO:pers:suj:1:sg:unb;PRO:clit;PROadv;i2|i|y;y;percevalb;3847;0 723 402;o;o	
+i;PRO:pers:suj:1:sg:unb;PRO:clit;PROper;i2|i|y;il;percevalb;4038;0 724 578;o;o	
+g;PRO:pers:suj:1:sg:unb;PRO:pers;PROper;je;je;percevalb;4306;0 726 203;en;en	
+g;PRO:pers:suj:1:sg:unb;PRO:pers;PROper;je;je;pers;96;0 836 953;en;en	
+j;PRO:pers:suj:1:sg:unb;PRO:pers;PROper;je;je;graal;787;1 276 821;en;en	
+j;PRO:pers:suj:1:sg:unb;PRO:pers;PROper;je;je;graal;806;1 276 940;en;en	
+j;PRO:pers:suj:1:sg:unb;PRO:pers;PROadv;je;y;evrat1;2239;1 310 015;en;en	
+j;PRO:pers:suj:1:sg:unb;PRO:pers;PROadv;je;y;evrat1;4368;1 323 111;en;en	
+j;PRO:pers:suj:1:sg:unb;PRO:pers;PROper;je;je;contro;273;1 381 609;a;à	
+j;PRO:pers:suj:1:sg:unb;PRO:pers;PROper;je;je;contro;1331;1 387 901;o;o	
+j;PRO:pers:suj:1:sg:unb;PRO:pers;PONpdr;je;je;epee;531;1 407 037;o;o	
+j;PRO:pers:suj:1:sg:unb;PRO:pers;ADVgen;je;jà;mir;136;2 043 414;en;en	
+j;PRO:pers:suj:1:sg:unb;PRO:pers;PROadv;je;y;rose;1631;2 245 800;en;en	
+j;PRO:pers:suj:1:sg:unb;PRO:pers;PROadv;je;y;vcou;102;2 399 124;en;en	
+j;PRO:pers:suj:1:sg:unb;PRO:pers;PROper;je;je;hue;85;2 504 922;en;en	
+j;PRO:pers:suj:1:sg:unb;PRO:pers;PROper;je;je;cleom;2014;2 845 098;en;en	
+j;PRO:pers:suj:1:sg:unb;PRO:pers;PROper;je;je;vache;2592;2 920 360;en;en	
+j;PRO:pers:suj:1:sg:unb;PRO:pers;PROper;je;je;bourg;518;3 108 023;a;à	
+g;PRO:pers:suj:1:sg:unb;PRO:pers;PROper;je;je;contre;3223;3 146 983;an;en	
