@@ -47,3 +47,30 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# Custom for MacOS
+# macOS System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.metadata_never_index
+.fseventsd
+.Trashes
+._*
+
+# Editor & IDE Files
+.vscode/
+.idea/
+
+# Xcode Files
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+*.xcodeproj/project.xcworkspace/
+
+# Dependencies & Logs
+node_modules/
+npm-debug.log
+yarn-error.log
+__pycache__/
