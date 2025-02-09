@@ -1,7 +1,7 @@
 # Comparalem
 R script to autodetect lemma with graphical variation.
 
-> This is a alpha version of Comparalem V2. Developping of v2 is not finished yet, this is not intended for public use. Yet, it is fonctional; if you wish to use it, you're free to do so.
+> This is a alpha version of Comparalem V2, not intended for public use. Yet, it is fonctional; if you wish to use it, you're free to do so.
 
 # Documentation
 Documentation writing is undergoing. Some information is provided in ```Instructions.md```, but this is hardly a documentation. Scripts are interactive and ask the user for the input files and parameters.
