@@ -74,3 +74,4 @@ node_modules/
 npm-debug.log
 yarn-error.log
 __pycache__/
+path/to/large-file.ext

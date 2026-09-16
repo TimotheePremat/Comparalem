@@ -1,0 +1,191 @@
+📦 COMPARALEM SHINY APPLICATION
+├── 📄 pre_main.r (Main Application File)
+│
+├── 🎨 UI LAYER (page_navbar)
+│   ├── Theme & Setup
+│   │   ├── Bootstrap theme
+│   │   ├── Shiny JS integration
+│   │   └── Custom CSS styling
+│   │
+│   ├── 📋 SIDEBAR ACCORDION
+│   │   ├── 1️⃣ Load Data Tab
+│   │   │   ├── Load Data Panel
+│   │   │   │   ├── fileInput: df1 (Dataset 1)
+│   │   │   │   ├── fileInput: df2 (Dataset 2)
+│   │   │   │   ├── textInput: user_text_cat1 (rename df1)
+│   │   │   │   └── textInput: user_text_cat2 (rename df2)
+│   │   │   ├── Parse Data Panel
+│   │   │   │   ├── selectInput: select_col_to_parse
+│   │   │   │   ├── textAreaInput: cell_edit
+│   │   │   │   ├── actionButton: save_text_cell
+│   │   │   │   ├── selectInput: sep_parse
+│   │   │   │   └── actionButton: parse
+│   │   │   └── Drop Columns Panel
+│   │   │       ├── selectInput: drop_cols
+│   │   │       └── actionButton: remove_cols
+│   │   │
+│   │   ├── 2️⃣ Find Lemmas Tab
+│   │   │   ├── selectInput: lemma_var
+│   │   │   ├── actionButton: find_lemmas
+│   │   │   └── actionButton: skip_lemmas
+│   │   │
+│   │   ├── 3️⃣ Filter Lemmas Tab
+│   │   │   ├── actionButton: delete_lemmas
+│   │   │   ├── actionButton: undo_last_lemma
+│   │   │   └── actionButton: undo_all_lemma
+│   │   │
+│   │   ├── 4️⃣ Filter Forms Tab
+│   │   │   ├── actionButton: delete_forms
+│   │   │   ├── actionButton: undo_last_form
+│   │   │   ├── actionButton: undo_all_forms
+│   │   │   ├── uiOutput: col_selector
+│   │   │   └── Columns Panel (column visibility)
+│   │   │
+│   │   └── 5️⃣ Filter by Metadata Tab
+│   │       ├── uiOutput: text_id_col_ui
+│   │       ├── uiOutput: text_filtering_col_ui
+│   │       ├── actionButton: coerce_col_numeric
+│   │       ├── actionButton: delete_text_filter
+│   │       ├── actionButton: undo_last_text_filter
+│   │       └── actionButton: undo_all_text_filter
+│   │
+│   └── 📑 MAIN CONTENT PANELS
+│       ├── Load Data
+│       │   ├── Table: df1_preview
+│       │   └── Table: df2_preview
+│       ├── Find Lemmas
+│       │   ├── Table: data_cat1_preview
+│       │   └── Table: data_cat2_preview
+│       ├── Filter Lemmas
+│       │   └── Table: data_freq_merged_preview
+│       ├── Filter Forms
+│       │   └── Table: concordancer_preview
+│       ├── Filter by Metadata
+│       │   ├── Plot: text_filtering_plot
+│       │   └── Table: text_filtering_table
+│       └── Save / Load
+│           ├── Backup Section
+│           ├── Export Section
+│           └── Resume Section
+│
+└── ⚙️ SERVER LAYER (server function)
+    ├── 📥 Data Input & Loading
+    │   ├── raw_df1() - reactive data load
+    │   ├── raw_df2() - reactive data load
+    │   ├── df1 - reactiveVal() storage
+    │   ├── df2 - reactiveVal() storage
+    │   └── Data trimming/cleaning
+    │
+    ├── 🏷️ Data Naming
+    │   ├── df1_name_reac() - reactive name display
+    │   └── df2_name_reac() - reactive name display
+    │
+    ├── ✏️ Data Parsing
+    │   ├── Column selection
+    │   ├── Text editing (cell_edit)
+    │   ├── Parsing with separators
+    │   └── Column renaming
+    │
+    ├── 🗑️ Column Management
+    │   ├── Column selection UI
+    │   └── Column removal logic
+    │
+    ├── 🔍 SECTION 1: FIND LEMMAS (lines 498-645)
+    │   ├── data_cat1 - reactiveVal()
+    │   ├── data_cat2 - reactiveVal()
+    │   ├── lemma_var_rv - reactiveVal()
+    │   ├── find_lemmas button logic
+    │   ├── common_lemmas_1() - reactive filtering
+    │   ├── common_lemmas_2() - reactive filtering
+    │   ├── data_freq_merged_temp() - temp calculation
+    │   ├── data_freq_merged() - main lemma frequency table
+    │   └── UI Renderings for lemma display
+    │
+    ├── 🎯 SECTION 2: FILTER OUT LEMMAS (lines 647-809)
+    │   ├── uploaded_backup_lemmas - reactiveVal()
+    │   ├── data_freq_merged_rv - reactiveVal() (main storage)
+    │   ├── undo_stack - reactiveVal(list())
+    │   ├── original_df - reactiveVal()
+    │   ├── lemma_render_trigger - reactiveVal()
+    │   ├── Sync observer (data_freq_merged → data_freq_merged_rv)
+    │   ├── DT render: data_freq_merged_preview
+    │   ├── Delete lemmas logic (with undo stack)
+    │   ├── Undo last deletion
+    │   ├── Undo all deletions
+    │   ├── Double-click to filter forms
+    │   └── Download handler: download_lemma
+    │
+    ├── 🗂️ SECTION 3: FILTER OUT FORMS (lines 810-1110)
+    │   ├── concordancer_rv - reactiveVal() (form data storage)
+    │   ├── concordancer_undo - reactiveVal(list())
+    │   ├── text_id_col_rv - reactiveVal()
+    │   ├── text_filtering_col_rv - reactiveVal()
+    │   ├── uploaded_backup_forms - reactiveVal()
+    │   ├── concordancer_from_upload - reactiveVal()
+    │   ├── concordancer() - reactive [MAIN] - if/else logic
+    │   │   ├── IF: Use uploaded concordancer
+    │   │   └── ELSE: Generate from pipeline (df1+df2 filtered)
+    │   ├── Initialize concordancer_rv
+    │   ├── recompute_lemma_counts() - function to update lemma frequencies
+    │   ├── Delete forms logic (with undo stack)
+    │   ├── Undo last/all deletions
+    │   ├── cols_selected_rv - column visibility state
+    │   ├── col_selector UI
+    │   ├── concordancer_render_trigger - reactiveVal()
+    │   ├── DT render: concordancer_preview
+    │   ├── Download handler: download_concordancer
+    │   └── outputOptions: suspendWhenHidden = FALSE
+    │
+    ├── 📊 SECTION 4: Filter by Metadata (lines 1112-1282)
+    │   ├── text_id_col_ui - renderUI() selector
+    │   ├── text_filtering_col_ui - renderUI() selector for metadata
+    │   ├── col_is_numeric() - reactive type detection
+    │   ├── text_filtering_bounds() - reactive min/max values
+    │   ├── text_filtering_slider_ui - conditional numeric UI
+    │   ├── text_filtering_plot - renderPlot() (numeric distribution)
+    │   ├── text_filtering_table - renderDT() (categorical values)
+    │   ├── coerce_col_numeric logic
+    │   ├── delete_text_filter logic (numeric interval or categorical exclusion)
+    │   ├── Undo last/all text filter operations
+    │   └── recompute_lemma_counts() callback after filtering
+    │
+    └── 💾 SECTION 5: Save/Resume Routines (lines 1284-end)
+        ├── Save backup
+        │   ├── Forms (concordancer_rv)
+        │   ├── Lemmas (data_freq_merged_rv)
+        │   ├── Settings (variable names)
+        │   └── Creates Excel file in Data/saved/
+        └── Resume from backup
+            ├── Reads Excel sheets (lemmas, forms, settings)
+            ├── Cross-filters both tables
+            ├── Restores reactive values
+            ├── Restores UI input values
+            └── Shows notification
+
+
+User Upload → Raw Data → df1/df2 → Parse/Clean
+                ↓
+        ↓ Find Lemmas
+Filter Lemmas Table (data_freq_merged_rv)
+        ↓
+Generate Concordancer (concordancer_rv) ← [IF/ELSE LOGIC POINT]
+        ↓
+Filter Forms (delete rows + undo stack)
+        ↓
+Filter by Metadata (numeric intervals or categorical exclusion)
+        ↓
+Save Backup → Excel File
+
+
+
+raw_df1/raw_df2 → df1/df2 → data_cat1/data_cat2
+                    ↓
+            common_lemmas_1/2 → data_freq_merged()
+                    ↓
+            data_freq_merged_rv (synced via observe)
+                    ↓
+            concordancer() [Generated or Uploaded]
+                    ↓
+            concordancer_rv (initialized once)
+                    ↓
+            recompute_lemma_counts() (updates on deletions)
